@@ -251,19 +251,29 @@ function prettyTitle(fileName) {
 }
 
 ipcMain.handle('listMusic', async () => {
-  // Сначала ищем встроенную папку music рядом с приложением,
-  // иначе — папку в профиле пользователя.
+  // Сначала ищем встроенную папку music рядом с приложением.
+  // Если в ней нет аудиофайлов, используем папку пользователя.
   const bundledFolder = path.join(__dirname, 'music');
-  const userFolder = path.join(process.env.USERPROFILE, 'Music', 'THE ULTRAKILL OST');
-  const musicFolder = fs.existsSync(bundledFolder) ? bundledFolder : userFolder;
+  const userFolder = path.join(process.env.USERPROFILE, 'Music', 'Al2z Island');
+  const audioExt = ['.mp3', '.ogg', '.wav', '.aac', '.flac', '.m4a', '.opus'];
+
+  async function hasAudio(folder) {
+    if (!fs.existsSync(folder)) return false;
+    try {
+      const files = await fs.promises.readdir(folder);
+      return files.some((file) => audioExt.includes(path.extname(file).toLowerCase()));
+    } catch {
+      return false;
+    }
+  }
+
+  const bundled = await hasAudio(bundledFolder);
+  const musicFolder = bundled ? bundledFolder : userFolder;
 
   try {
     const files = await fs.promises.readdir(musicFolder);
     return files
-      .filter((file) => {
-        const ext = path.extname(file).toLowerCase();
-        return ['.mp3', '.ogg', '.wav', '.aac', '.flac', '.m4a', '.opus'].includes(ext);
-      })
+      .filter((file) => audioExt.includes(path.extname(file).toLowerCase()))
       .sort((a, b) => a.localeCompare(b, 'ru'))
       .map((file) => {
         const fullPath = path.join(musicFolder, file);
@@ -271,8 +281,8 @@ ipcMain.handle('listMusic', async () => {
         const lrcPath = path.join(musicFolder, `${base}.lrc`);
         return {
           title: prettyTitle(file),
-          artist: 'ULTRAKILL',
-          album: 'THE ULTRAKILL OST',
+          artist: bundled ? 'Встроенная музыка' : 'Локальная музыка',
+          album: 'Al2z Island',
           url: pathToFileURL(fullPath).href,
           lrc: fs.existsSync(lrcPath) ? pathToFileURL(lrcPath).href : null,
           duration: 0

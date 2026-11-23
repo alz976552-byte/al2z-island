@@ -1,7 +1,7 @@
 {
   "name": "al2z-island-app",
   "version": "1.0.0",
-  "description": "Al2z Island desktop application with THE ULTRAKILL OST music player",
+  "description": "Al2z Island desktop companion with a local music player",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

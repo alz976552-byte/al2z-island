@@ -1,11 +1,13 @@
 appId: com.al2z.island
 productName: Al2z Island
+electronVersion: 45.3.3
+artifactName: "Al2z Island Setup 1.0.0 (no music).${ext}"
 electronDist: node_modules/electron/dist
 asar: false
 publish: null
 
 directories:
-  output: dist-installer
+  output: dist-installer-nomusic
 
 files:
   - package.json

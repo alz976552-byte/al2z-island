@@ -5,7 +5,7 @@ const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const OUT = path.join(DIST, 'Al2z Island');
 const ELECTRON = path.join(ROOT, 'node_modules', 'electron', 'dist');
-const MUSIC_SRC = path.join(process.env.USERPROFILE, 'Music', 'THE ULTRAKILL OST');
+const MUSIC_GUIDE = path.join(ROOT, 'music', 'HOW_TO_ADD_MUSIC.txt');
 
 function rm(p) {
   fs.rmSync(p, { recursive: true, force: true });
@@ -46,11 +46,11 @@ async function main() {
     if (fs.existsSync(src)) fs.copyFileSync(src, path.join(appDir, f));
   }
 
-  console.log('Bundling music...');
-  if (fs.existsSync(MUSIC_SRC)) {
-    fs.cpSync(MUSIC_SRC, path.join(appDir, 'music'), { recursive: true });
-  } else {
-    console.warn('Music folder not found:', MUSIC_SRC);
+  console.log('Adding music guide (no audio bundled)...');
+  const musicDir = path.join(appDir, 'music');
+  fs.mkdirSync(musicDir, { recursive: true });
+  if (fs.existsSync(MUSIC_GUIDE)) {
+    fs.copyFileSync(MUSIC_GUIDE, path.join(musicDir, 'HOW_TO_ADD_MUSIC.txt'));
   }
 
   // README for the friend
@@ -70,7 +70,7 @@ async function main() {
     '- Тестовое уведомление о загрузке: Ctrl+Shift+N или пункт в трее.',
     '- Выход: значок в трее -> "Выход" либо Ctrl+Shift+Q.',
     '',
-    'Музыка уже встроена (THE ULTRAKILL OST).',
+    'Музыка НЕ встроена. См. resources\\app\\music\\HOW_TO_ADD_MUSIC.txt',
     ''
   ].join('\r\n');
   fs.writeFileSync(path.join(OUT, 'Как запустить.txt'), readme, 'utf8');
