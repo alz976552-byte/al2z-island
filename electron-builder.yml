@@ -1,0 +1,35 @@
+appId: com.al2z.island
+productName: Al2z Island
+electronDist: node_modules/electron/dist
+asar: false
+publish: null
+
+directories:
+  output: dist-installer
+
+files:
+  - package.json
+  - main.js
+  - preload.js
+  - island.html
+  - icon.ico
+  - icon-mascot.png
+  - music/**/*
+  - "!node_modules/**/*"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: icon.ico
+  requestedExecutionLevel: highestAvailable
+
+nsis:
+  language: "1033"
+  perMachine: true
+  allowElevation: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "Al2z Island"
+  deleteAppDataOnUninstall: true

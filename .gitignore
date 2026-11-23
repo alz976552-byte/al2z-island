@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build outputs (they go to GitHub Releases, not to the repository)
+dist/
+dist-installer/
+for-github-releases/
+*.exe
+*.zip
+*.blockmap
+
+# Local backups and unrelated projects
+backup-*/
+ClickPetSim/
+PixelBall/
+portfolio/
+portfolio-deploy/
+RobloxBridge/
+Undertale-like/
+liquid-tweaker/
+
+# Logs / OS junk
+*.log
+.DS_Store
+Thumbs.db

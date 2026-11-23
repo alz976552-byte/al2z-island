@@ -1,0 +1,16 @@
+{
+  "name": "al2z-island-app",
+  "version": "1.0.0",
+  "description": "Al2z Island desktop application with THE ULTRAKILL OST music player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "keywords": [],
+  "author": "Al2z",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^45.3.3"
+  }
+}

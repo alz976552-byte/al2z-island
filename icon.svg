@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1b1e"/>
+      <stop offset="0.45" stop-color="#0b0b0d"/>
+      <stop offset="1" stop-color="#030304"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1c20"/>
+      <stop offset="0.5" stop-color="#09090b"/>
+      <stop offset="1" stop-color="#020203"/>
+    </linearGradient>
+    <linearGradient id="eye" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc08a"/>
+      <stop offset="1" stop-color="#d97757"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#d97757" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d97757" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="12" y="12" width="232" height="232" rx="56" fill="url(#bg)"/>
+  <rect x="12.5" y="12.5" width="231" height="231" rx="55.5" fill="none" stroke="#ffffff" stroke-opacity="0.1"/>
+
+  <ellipse cx="128" cy="176" rx="96" ry="34" fill="url(#glow)"/>
+  <rect x="32" y="92" width="192" height="72" rx="36" fill="url(#pill)" stroke="#ffffff" stroke-opacity="0.14"/>
+  <path d="M70 95 H186" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2" stroke-linecap="round"/>
+
+  <circle cx="104" cy="128" r="17" fill="url(#eye)"/>
+  <circle cx="146" cy="128" r="17" fill="url(#eye)"/>
+  <circle cx="109" cy="132" r="6" fill="#08080a"/>
+  <circle cx="151" cy="132" r="6" fill="#08080a"/>
+  <circle cx="111" cy="130" r="2" fill="#ffffff" fill-opacity="0.85"/>
+  <circle cx="153" cy="130" r="2" fill="#ffffff" fill-opacity="0.85"/>
+</svg>
